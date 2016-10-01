@@ -1,0 +1,20 @@
+Make MySQL as Windows Service
+	1. Go to directory 
+	C:\> cd C:\MySQL\mysql-5.7.7-win_x64\bin
+
+	2. Make sure MySQL server is down if not
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysqladmin -uroot shutdown
+
+	3. Install as Windows service (service name here is MySQL57)
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysqld --install MySQL57
+
+	4. Start MySQL57 service as windows startup service
+	C:\> NET START MySQL57
+
+Remove MySQL from windows Service
+	5. Stop MySQL57 service if you don't want
+	C:\> NET STOP MySQL57
+	
+	6. Suppose if you want to remove Windows service
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysqladmin -uroot shutdown
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysqld --remove MySQL57
