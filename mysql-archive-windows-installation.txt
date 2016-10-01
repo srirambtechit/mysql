@@ -1,0 +1,38 @@
+MySQL non-installer version of installation steps:-
+	1. Create MySQL and data directories
+	C:\> mkdir C:\MySQL
+	C:\> mkdir C:\MySQL\data
+
+	2. Extract mysql-5.7.7-win_x64.zip to C:\MySQL, you can find C:\MySQL\mysql-5.7.7-win_x64 created
+
+	3. create C:\MySQL\mysql-5.7.7-win_x64\my.ini file with below content in it
+	[mysqld]
+	# set basedir to your installation path
+	basedir=E:\\mysql
+	basedir=C:\\MySQL\\mysql-5.7.15-winx64
+	# set datadir to the location of your data directory
+	datadir=C:\\MySQL\\data
+
+	5. Initialize data directory since 5.7.7 version of MySQL, note that this also 
+	generates random password to be used for first time login to MySQL prompt
+	C:\> cd C:\MySQL\mysql-5.7.7-win_x64\bin
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysqld --initialize --console
+	Random password is bA_-%75b:G;R (Just for an example)
+
+
+	6. Start MySQL daemon process
+	C:\> mysqld --console
+
+	7. Go to mysql client, open new CMD prompt
+	C:\> cd C:\MySQL\mysql-5.7.7-win_x64\bin
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysql -uroot -p
+	Enter password: bA_-%75b:G;R
+
+	8. Change random password
+	mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+	mysql> exit
+
+	9. Login MySQL prompt with new password
+	C:\MySQL\mysql-5.7.7-win_x64\bin> mysql -uroot -p
+	Enter password: root
+	mysql> 
